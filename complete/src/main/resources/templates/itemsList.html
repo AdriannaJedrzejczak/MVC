@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link href="../static/css/itemsList.css" th:href="@{/css/itemsList.css}" rel="stylesheet" />
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form th:action="@{/addItem}" method="post" th:object="${newItem}" >
+        <ul>
+          <li th:each = "el: ${items}" >
+              <span th:text="${el.getDesc()} "></span>
+              <!--<button th:action="@{/deleteItem}" method="delete" th:object="${el.getId()}" type="button" >Delete</button>-->
+              <!--<a th:href="@{/deleteItem(item=${el})}">delete</a>-->
+              <button type="submit" name="deleteItem" th:value="${el.id}">xxxx</button>
+          </li>
+        </ul>
+        <input name="inputValue" type="text" th:field="*{desc}" />
+        <button class="btn" type="submit" >Refresh</button>
+    </form>
+
+
+</body>
+</html>
